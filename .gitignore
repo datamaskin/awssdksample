@@ -1,0 +1,4 @@
+target/
+awslambda.iml
+awslambda.ipr
+awslambda.iws
