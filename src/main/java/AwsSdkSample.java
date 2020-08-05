@@ -19,6 +19,8 @@ import com.amazonaws.auth.AWSCredentialsProvider;
 import com.amazonaws.auth.profile.ProfileCredentialsProvider;
 import com.amazonaws.auth.profile.ProfilesConfigFile;
 import com.amazonaws.services.ec2.AmazonEC2;
+import com.amazonaws.services.ec2.AmazonEC2Client;
+import com.amazonaws.services.ec2.model.*;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.iterable.S3Objects;
@@ -26,7 +28,9 @@ import com.amazonaws.services.s3.model.Bucket;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
 
 import java.io.File;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * This class is a starting point for working with the AWS SDK for Java, and
@@ -91,7 +95,7 @@ public class AwsSdkSample {
                     + "http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html");
         }
 
-//        ec2 = new AmazonEC2Client(credentialsProvider);
+        ec2 = new AmazonEC2Client(credentialsProvider);
         s3  = new AmazonS3Client(credentialsProvider);
     }
 
@@ -111,7 +115,7 @@ public class AwsSdkSample {
              * In this sample, we use the EC2 client to list the availability zones
              * in a region, and then list the instances running in those zones.
              */
-            /*DescribeAvailabilityZonesResult availabilityZonesResult = ec2.describeAvailabilityZones();
+            DescribeAvailabilityZonesResult availabilityZonesResult = ec2.describeAvailabilityZones();
             List<AvailabilityZone> availabilityZones = availabilityZonesResult.getAvailabilityZones();
             System.out.println("You have access to " + availabilityZones.size() + " availability zones:");
             for (AvailabilityZone zone : availabilityZones) {
@@ -124,7 +128,7 @@ public class AwsSdkSample {
                 instances.addAll(reservation.getInstances());
             }
 
-            System.out.println("You have " + instances.size() + " Amazon EC2 instance(s) running.");*/
+            System.out.println("You have " + instances.size() + " Amazon EC2 instance(s) running.");
 
 
             /*
